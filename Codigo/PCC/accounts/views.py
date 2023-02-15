@@ -44,6 +44,6 @@ def password(request):
         'form': form
     }
     
-    return render(request, 'registration/forgot-password.html', context)
+    return render(request, 'registration/password.html', context)
 
 
