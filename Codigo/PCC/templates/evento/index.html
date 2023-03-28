@@ -1,0 +1,65 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Agendar eventos </h4>
+                
+                <div class="table-responsive">
+                    <table class="table header-border">
+                        <thead>
+                            <tr>
+                                <th width="30%">Psicologo</th>
+                                <th width="40%">Data do evento</th>
+                                <th> </th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if evento %}
+                            {% for e in evento %}
+                                <tr>
+                                    <td> <a href="/evento/detail">{{ e.nome }}</a></td>
+                                    <td> {{ c.data }} </td>
+                                    {%if is_Alunos%}
+                                    <td>
+                                        <a href="/evento/editar/{{ c.id }}">
+                                            <button type="button" class="btn mb-1 btn-primary">
+                                                Solicitar evento <span class="btn-icon-right"> <i class="fa fa-edit"></i> </span>
+                                            </button>
+                                        </a>
+                                    </td>
+                                    {%else%}
+                                     <td>
+                                        <a href="/evento/editarPsi/{{ c.id }}">
+                                            <button type="button" class="btn mb-1 btn-primary">
+                                                Editar <span class="btn-icon-right"></span>
+                                             </button>
+                                        </a>
+                                     </td>
+                                    <td>
+                                        <a href="/evento/excluir/{{ c.id }}">
+                                            <button type="button" class="btn mb-1 btn-danger">
+                                                Excluir <span class="btn-icon-right"></span>
+                                            </button>
+                                        </a>
+                                    </td>
+                                    {%endif%}
+                                </tr>
+                            {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td>Não há eventos no momento.</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

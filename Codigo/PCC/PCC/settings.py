@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrapform',
     'accounts.apps.AccountsConfig',
+    'evento.apps.EventoConfig',
+    'informativo.apps.InformativoConfig',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,6 @@ STATICFILES_DIRS = [ str(BASE_DIR) + '/static' ]
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/accounts/login"
