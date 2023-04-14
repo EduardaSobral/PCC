@@ -7,13 +7,13 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Detalhes do eventos </h4>
+                <h4 class="card-title">Detalhes do evento </h4>
                 <form action="/evento/editar/{{evento_id}}/" method="post">
 
                     {% csrf_token %}
 
                     {{form|bootstrap}}              
-
+                    <br>
                     <input type="submit" class="btn btn-primary" value="Salvar">
                 </form>
             </div>

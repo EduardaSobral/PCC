@@ -1,1 +1,51 @@
 {% extends '_base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+            <div class="card-body">
+                <h4 class="card-title">Informativos do Grêmio Estudantil</h4>
+                <div class="text-right mr-3">
+                    <div class="text-right mr-3">
+                        {%if not is_Alunos%}                 
+                        <a href="/informativo/criar" style="float:right">
+                            <button type="button" class="btn mb-1 btn-info" style="float:left;">
+                                Adicionar informativo <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                            </button>
+                        </a>
+                        {%endif%} 
+                    </div>
+                </div>
+                {% if informativo %}
+                {% for i in informativo %}
+                <div class="card" style="width: 68rem;">
+                    <div class="card-body">
+                        <a href="/informativo/{{ i.id }}" style="text-decoration: none; color: black;">
+                        <h5 class="card-title">{{ i.nome }}</h5>
+                        <p class="card-text" style="text-align: justify;">{{ i.informativo | truncatewords:100}}</p>
+                        <div style="float:right">
+                            <a href="/informativo/editar/{{ i.id }}">
+                            <button type="button" class="btn mb-1 btn-primary">
+                                Editar <span class="btn-icon-right"></span>
+                            </button>
+                            </a>
+                            <a href="/informativo/excluir/{{ i.id }}">
+                            <button type="button" class="btn mb-1 btn-danger">
+                                Excluir <span class="btn-icon-right"></span>
+                            </button>
+                            </a>
+                        </div>
+                        </a>
+                    </div>    
+                </div>    
+                <br>
+                {% endfor %}
+                {% else %}
+                <tr>
+                <td>Não há informativos no momento, aguarde as próximas postagens.</td>
+                </tr>
+                {% endif %}
+            </div>    
+        </div>          
+</div>   
+{% endblock %}

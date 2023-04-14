@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrapform',
     'accounts.apps.AccountsConfig',
+    'home.apps.HomeConfig',
     'evento.apps.EventoConfig',
     'informativo.apps.InformativoConfig',
 ]

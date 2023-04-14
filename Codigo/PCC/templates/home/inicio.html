@@ -1,0 +1,75 @@
+{% extends '_base.html' %}
+
+{% load static %}
+
+{% block content %}
+<body>
+  <style>
+    h1 {
+      color:  #0d6efd;
+    }
+    </style>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <img src=" {% static 'img/home.png' %}" style="float: right" width="250" alt="...">
+            <br>
+            <div class="col-lg-12">
+              <div class="p-10">
+                <br>
+                <br>
+              <div class="p-0" style="text-align: center;">
+                <h1>Grêmio Estudantil Luzia Pereira Borges</h1>
+                
+                <div class="p-4" style="text-align: center;">
+                <h5>Fique por dentro de tudo sobre o grêmio estudantil!</h5>
+                </div>
+              </div>
+                <table  width="100%"cellpadding="10">
+                  <tr>
+                  <td width="50%" valign="top">
+                    <div style="text-align: justify;">
+                      O grêmio estudantil é uma organização composta por estudantes com o objetivo representar e defender os interesses dos estudantes perante a direção da escola, os professores e a comunidade escolar. É uma entidade estudantil que busca promover a participação ativa dos estudantes na gestão e no planejamento das atividades escolares, bem como a defesa de seus direitos e interesses educacionais. 
+                  </div>
+                </td>
+
+                    <td width="50%" valign="top">
+                      Dessa forma, o site surge como uma forma de aproximar os diretores do grêmio com os discentes, ofertando a eles as atividades realizadas por essa entidade, as notícias que a envolvem e um contato direto com os seus representantes.
+                      <br>
+                      Localização: Pavilhão em frente ao auditório e ao refeitório, na primeira porta
+                    </td>
+
+                  </tr>
+                </table>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <br>
+    <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Eventos</h5>
+            <p class="card-text">Veja aqui alguns dos eventos organizados pelo grêmio estudantil que estão por vir.</p>
+            <a href="/evento/" class="btn btn-primary">Visitar</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Informativos</h5>
+            <p class="card-text">Veja aqui alguns informativos relacionados as atividades do gremio estantio e o que ele anda realizando.</p>
+            <a href="/informativo/" class="btn btn-primary">Visitar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</body>
+{% endblock %}

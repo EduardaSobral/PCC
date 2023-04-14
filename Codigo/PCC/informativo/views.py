@@ -38,22 +38,20 @@ def excluir(request, informativo_id):
 @login_required
 def criar(request):
 
-    if request.method == "POST":
-
+    if request.method == "POST": 
         form = InformativoForm(request.POST)
 
         if form.is_valid():
-            form.save()
-            
+            form.save() 
             return HttpResponseRedirect("/informativo")
-    else:
+    else: 
         form = InformativoForm()
 
     context = {
         'form': form
     }
 
-    return render(request, 'informativo/criar.html', context)
+    return render(request, 'informativo/criar.html/', context)
 
 #método para editar um registro de informativo
 @login_required
