@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+            <div class="card-body">
+                <h4 class="card-title">Detalhes do reuniao</h4>
+                <div>
+                    <br>
+                    <div class="card">
+                        <div class="card-body" style="text-align: justify;">
+                            <h5> {{ reuniao.nome }}</h5>
+                            <h5 style="color: #6c757d; font-size: 16px;">Data: {{ reuniao.data }}</h5>
+                                <p style="font-size: 18px;"> Informações: {{ reuniao.informacoes }}</p>
+                        </div>
+                      </div>
+            </div>
+        
+    </div>
+</div>
+
+
+{% endblock %}

@@ -4,6 +4,7 @@ from .models import Cadastro
 from django.http import HttpResponseRedirect
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User, Group
+from django.contrib.auth.decorators import login_required
 
 def register(request):
     
@@ -14,11 +15,8 @@ def register(request):
 
             form.save()            
             
-            group = Group.objects.get(name='Alunos')
-            new_user.groups.add(group)
-
-            
-
+            group = Group.objects.get(name='Gremio')
+            new_user.groups.add(group) 
             return HttpResponseRedirect("/accounts/login/")
     else:    
         form = CadastroForm()
@@ -47,3 +45,25 @@ def password(request):
     return render(request, 'registration/password.html', context)
 
 
+# Parte dos contatos
+
+
+def index(request):
+    
+    is_Gremio = request.user.groups.filter(name='Gremio').exists()
+    contato = Cadastro.objects.all()
+    
+    context = {
+        'contato': contato,
+        'is_Gremio': is_Gremio
+    }
+
+    return render(request, 'contato/index.html', context)
+
+
+@login_required
+def excluir(request, contato_id):
+    
+    Cadastro.objects.get(pk=contato_id).delete()
+    
+    return HttpResponseRedirect("/contato")

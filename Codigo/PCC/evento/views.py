@@ -27,19 +27,20 @@ def criar(request):
 
     return render(request, 'evento/criar.html/', context)
 
-@login_required
 def index(request):
     
+    is_Gremio = request.user.groups.filter(name='Gremio').exists()
     evento = Evento.objects.all()
     
     context = {
         'evento': evento,
+        'is_Gremio': is_Gremio
     }
 
     return render(request, 'evento/index.html', context)
 
 #método para detalhar evento
-@login_required
+
 def detail(request, evento_id):
     evento = Evento.objects.get(pk=evento_id)
     context = {

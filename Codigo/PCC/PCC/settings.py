@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'home.apps.HomeConfig',
     'evento.apps.EventoConfig',
+    'reuniao.apps.ReuniaoConfig',
     'informativo.apps.InformativoConfig',
 ]
 
@@ -128,5 +129,5 @@ STATICFILES_DIRS = [ str(BASE_DIR) + '/static' ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/home/inicio"
 LOGOUT_REDIRECT_URL = "/accounts/login"

@@ -16,7 +16,9 @@ class CadastroForm(UserCreationForm):
         'nome',
         'telefone',
         'matricula',
+        'cargo',
         'username',
+        'email',
         'password1',
         'password2'
         )

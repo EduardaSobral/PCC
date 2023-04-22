@@ -7,7 +7,7 @@
                 <h4 class="card-title">Informativos do Grêmio Estudantil</h4>
                 <div class="text-right mr-3">
                     <div class="text-right mr-3">
-                        {%if not is_Alunos%}                 
+                        {%if is_Gremio%}                 
                         <a href="/informativo/criar" style="float:right">
                             <button type="button" class="btn mb-1 btn-info" style="float:left;">
                                 Adicionar informativo <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
@@ -23,6 +23,7 @@
                         <a href="/informativo/{{ i.id }}" style="text-decoration: none; color: black;">
                         <h5 class="card-title">{{ i.nome }}</h5>
                         <p class="card-text" style="text-align: justify;">{{ i.informativo | truncatewords:100}}</p>
+                        {%if is_Gremio%} 
                         <div style="float:right">
                             <a href="/informativo/editar/{{ i.id }}">
                             <button type="button" class="btn mb-1 btn-primary">
@@ -35,6 +36,7 @@
                             </button>
                             </a>
                         </div>
+                        {%endif%}
                         </a>
                     </div>    
                 </div>    

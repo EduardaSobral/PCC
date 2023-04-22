@@ -1,11 +1,15 @@
 from django.db import models
 
-class Reuniao(models.Model):
-    nome = models.CharField(max_length=100)
-    data = models.CharField(max_length=20)
-    horario = models.CharField(max_length=20)
-    informacoes = models.CharField(max_length=300)
-    cargos: CharField(max_length=70)
 
+class Reuniao (models.Model):
+    
+
+    nome = models.CharField(max_length=100)
+    data = models.DateTimeField("Data da reunião (00/00/0000   00:00)")
+    informacoes = models.CharField("Informações", max_length=300)
+    cargos = models.CharField(max_length=100)
+
+
+    
     def _str_(self):
         return self.nome

@@ -5,19 +5,18 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-@login_required
 def index(request):
 
-    print('Está aqui!')
+    is_Gremio = request.user.groups.filter(name='Gremio').exists()
     informativo = Informativo.objects.all()
 
     context = {
         'informativo': informativo,
-    }
+        'is_Gremio': is_Gremio
+        }
     
     return render(request, 'informativo/index.html', context)
 
-@login_required
 def detail(request, informativo_id):
     informativo = Informativo.objects.get(pk=informativo_id)
     context = {

@@ -1,0 +1,50 @@
+{% extends '_base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="row">
+    <div class="col-12">
+        <div class="card-body">
+            <h4 class="card-title">Formas de contato do Grêmio Estudantil</h4>
+            <br>
+            {% if contato %}
+            <div class="row">
+                {% for c in contato %}
+                <div class="col-md-4">
+                    <div class="card" style="width: 19rem; height: 410px;">
+                        <h6 class="card-title" style="text-align: center;margin-top: 5px;" >{{ c.nome }}</h6>
+                            
+                        <hr style="border-top: 1px solid #000; margin: 3px 0;">
+                        <img src="{% static 'img/perfil.svg' %}" class="card-img-top" style="width: 200px; margin-left: auto; margin-right: auto; margin-top: 5px;" alt="...">
+                        <hr style="border-top: 1px solid #000; margin: 8px 0;margin-bottom: -10px;">
+                        <div class="card-body">
+                            <p style="font-size: 16px; margin-bottom: 0;">Cargo: {{ c.cargo }}</p> <!-- Ajustando a margem inferior aqui -->
+                            <p style="font-size: 16px; margin-bottom: 0;">Telefone: {{ c.telefone }}</p> <!-- Ajustando a margem inferior aqui -->
+                            <p style="font-size: 16px; margin-bottom: 0;">Email: {{ c.email }}</p> <!-- Ajustando a margem inferior aqui -->
+                            
+                            {%if is_Gremio%} 
+                            <div style="position: absolute; bottom: 10px; right: 10px;"> <!-- Ajustando a posição dos botões aqui -->
+                                
+                                <a href="/contato/excluir/{{ c.id }}">
+                                    <button type="button" class="btn mb-1 btn-danger">
+                                    Excluir <span class="btn-icon-right"></span>
+                                    </button>
+                                </a>
+                            </div>
+                            {%endif%}
+                        </div>
+                        
+                    </div>
+                    <br>
+                </div>
+                
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+        </div>    
+    </div>          
+</div>   
+
+
+{% endblock %}
