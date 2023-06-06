@@ -16,37 +16,42 @@
                         {%endif%} 
                     </div>
                 </div>
-                {% if informativo %}
-                {% for i in informativo %}
-                <div class="card" style="width: 68rem;">
-                    <div class="card-body">
-                        <a href="/informativo/{{ i.id }}" style="text-decoration: none; color: black;">
-                        <h5 class="card-title">{{ i.nome }}</h5>
-                        <p class="card-text" style="text-align: justify;">{{ i.informativo | truncatewords:100}}</p>
-                        {%if is_Gremio%} 
-                        <div style="float:right">
-                            <a href="/informativo/editar/{{ i.id }}">
-                            <button type="button" class="btn mb-1 btn-primary">
-                                Editar <span class="btn-icon-right"></span>
-                            </button>
-                            </a>
-                            <a href="/informativo/excluir/{{ i.id }}">
-                            <button type="button" class="btn mb-1 btn-danger">
-                                Excluir <span class="btn-icon-right"></span>
-                            </button>
-                            </a>
-                        </div>
-                        {%endif%}
-                        </a>
-                    </div>    
-                </div>    
                 <br>
-                {% endfor %}
-                {% else %}
-                <tr>
-                <td>Não há informativos no momento, aguarde as próximas postagens.</td>
-                </tr>
-                {% endif %}
+            <tbody>
+            
+                <div class="row mt-4">
+                    {% if informativo %}
+                        {% for i in informativo %}
+                            <div class="col-md-6">
+                                <div class="card mt-4" style="width: 34rem; height: 220px;">
+                                    <div class="card-body">
+                                        <a href="/informativo/{{ i.id }}" style="text-decoration: none; color: black;">
+                                            <h5 class="card-title">{{ i.nome }}</h5>
+                                            <p class="card-text" style="text-align: justify;">{{ i.informativo | truncatewords:50}}</p>
+                                            {%if is_Gremio%} 
+                                            <div style="float:right; margin-bottom: 20px;">
+                                                <a href="/informativo/editar/{{ i.id }}" style="float: right; margin-right: 5px;" class="btn mb-1 btn-info">
+                                                    Editar <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                                                </a>
+                                                <a href="/informativo/excluir/{{ i.id }}" style="float: right; margin-right: 5px;" class="btn mb-1 btn-danger">
+                                                    Excluir <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                                                </a>
+                                        </div>
+                                            {%endif%}
+                                        </a>
+                                    </div>    
+                                </div> 
+                            </div>
+                            
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
+                            <p>Não há informativos no momento, aguarde as próximas postagens.</p>
+                        </div>
+                    {% endif %}
+                </div>
+                
+            </tbody>
             </div>    
         </div>          
 </div>   

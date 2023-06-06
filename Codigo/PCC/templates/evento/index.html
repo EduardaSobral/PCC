@@ -26,42 +26,45 @@
                 </div>
                 {%endif%}
                 <tbody>
+                    
                     {% if evento %}
+                    <div class="row">
                     {% for e in evento %}
-                        <div class="col-12">
-                            <div class="card">
+                    <div class="col-md-6">
+                        <div class="card">
+                    <div class="card" style="width: 34rem; height: 380px;">
+                            
                                 <a href="/evento/{{ e.id }}" style="text-decoration: none; color: black;">
                                 <div class="card-header">
                                     {{ e.nome }}
                                 </div>
-                                <div class="card-body" style="text-align: justify;">
-                                    <blockquote class="blockquote mb-0">
+                                <div class="card-body d-flex flex-column" style="text-align: justify;">
+                                    <blockquote class="blockquote mb-0 flex-grow-1">
                                         <p>{{ e.informacoes | truncatewords:50 }}</p>
-                                            <footer class="blockquote-footer">Data: {{ e.data }} 
-                                                {%if is_Gremio%} 
-                                                <div style="float:right">
-                                                    <td>
-                                                    <a href="/evento/editar/{{ e.id }}">
-                                                    <button type="button" class="btn mb-1 btn-primary">
-                                                    Editar <span class="btn-icon-right"></span>
-                                                    </button>
-                                                    </a>
-                                                    </td>
-                                                    
-                                                    <td>
-                                                    <a href="/evento/excluir/{{ e.id }}">
-                                                    <button type="button" class="btn mb-1 btn-danger">
-                                                    Excluir <span class="btn-icon-right"></span>
-                                                    </button>
-                                                    </a>
-                                                    </td>
-                                                </div>
-                                                {%endif%}
-                                            </footer>
                                     </blockquote>
+                                    <footer class="blockquote-footer mt-auto">Data: {{ e.data }} 
+                                        {%if is_Gremio%} 
+                                        <div style="float:right">
+                                            <td>
+                                                <a href="/evento/editar/{{ e.id }}" style="float: right; margin-right: 5px;" class="btn mb-1 btn-info">
+                                                    Editar <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                                                </a>
+                                            </td>
+                                
+                                            <td>
+                                                <a href="/evento/excluir/{{ e.id }}" style="float: right; margin-right: 5px;" class="btn mb-1 btn-danger">
+                                                    Excluir <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                                                </a>
+                                            </td>
+                                        </div>                                                                  
+                                        {%endif%}
+                                    </footer>
                                 </div>
+                                
                             </a>
                             </div>
+                        </div>
+                    </div>
                             <br>
                             {% endfor %}
                             {% else %}
@@ -69,7 +72,7 @@
                             <td>Não há eventos no momento, aguarde as próximas postagens</td>
                             </tr>
                             {% endif %}
-                        </div>    
+                        </div> 
             </tbody>
             </div>
     </div>
