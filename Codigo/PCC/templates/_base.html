@@ -73,10 +73,12 @@
                                 Informativos
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <a class="nav-link" href="/documentos/">
+                            {%if is_Gremio%}
+                            <a class="nav-link" href="/reuniao/">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Documentos
+                                Reuniões
                             </a>
+                            {%endif%}
                             <a class="nav-link" href="/contato/">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Contatos

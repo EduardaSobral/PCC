@@ -5,26 +5,21 @@
     <div class="col-12">
             <div class="card-body">
                 <h4 class="card-title">Eventos do Grêmio Estudantil</h4>
-                
-                {%if is_Gremio%} 
                 <div class="text-right mr-3">
-                    
                     <div class="text-right mr-3">
+                        {%if is_Gremio%}
                         <a href="/evento/criar" style="float:right">
                             <button type="button" class="btn mb-1 btn-info">
                                 Adicionar evento <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
                             </button>
                         </a>  
-                        <a href="/reuniao/" style="float:right; margin-right: 5px;">
-                            <button type="button" class="btn mb-1 btn-info">
-                                Reuniões <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                            </button>
-                        </a>
-                        <br>
-                        <br>
+                        {%endif%}
                     </div>
+                    <br>
+                    <br>
+                    
                 </div>
-                {%endif%}
+                
                 <tbody>
                     
                     {% if evento %}
@@ -32,7 +27,7 @@
                     {% for e in evento %}
                     <div class="col-md-6">
                         <div class="card">
-                    <div class="card" style="width: 34rem; height: 380px;">
+                    <div class="card" style="width: 34rem; height: 330px;">
                             
                                 <a href="/evento/{{ e.id }}" style="text-decoration: none; color: black;">
                                 <div class="card-header">
@@ -42,7 +37,7 @@
                                     <blockquote class="blockquote mb-0 flex-grow-1">
                                         <p>{{ e.informacoes | truncatewords:50 }}</p>
                                     </blockquote>
-                                    <footer class="blockquote-footer mt-auto">Data: {{ e.data }} 
+                                    <footer class="blockquote-footer mt-auto" style="margin-bottom: 0px">Data: {{ e.data }} 
                                         {%if is_Gremio%} 
                                         <div style="float:right">
                                             <td>
@@ -50,7 +45,6 @@
                                                     Editar <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
                                                 </a>
                                             </td>
-                                
                                             <td>
                                                 <a href="/evento/excluir/{{ e.id }}" style="float: right; margin-right: 5px;" class="btn mb-1 btn-danger">
                                                     Excluir <span class="btn-icon-right"><i class="fa fa-plus"></i></span>

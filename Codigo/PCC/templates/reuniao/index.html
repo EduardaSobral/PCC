@@ -30,17 +30,17 @@
                         <footer class="blockquote-footer" style="float:left" >Data: {{ r.data }} </footer><br>
                         <class style="float:left">{{ r.informacoes | truncatewords:50}}</class></p>
                         <div style="float:right">
-                            <a href="/reuniao/editar/{{ r.id }}">
-                            <button type="button" class="btn mb-1 btn-primary">
-                                Editar <span class="btn-icon-right"></span>
-                            </button>
-                            </a>
-                            <a href="/reuniao/excluir/{{ r.id }}">
-                            <button type="button" class="btn mb-1 btn-danger">
-                                Excluir <span class="btn-icon-right"></span>
-                            </button>
-                            </a>
-                        </div>
+                            <td>
+                                <a href="/reuniao/editar/{{ r.id }}" style="float: right; margin-right: 5px;" class="btn mb-1 btn-info">
+                                    Editar <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/reuniao/excluir/{{ r.id }}" style="float: right; margin-right: 5px;" class="btn mb-1 btn-danger">
+                                    Excluir <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                                </a>
+                            </td>
+                        </div>    
                     </div>
                     <div class="card-footer text-body-secondary">
                         Cargos: {{ r.cargos }}
