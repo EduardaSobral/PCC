@@ -10,8 +10,10 @@ def index(request):
 
     print('Está aqui!')
     reuniao = Reuniao.objects.all()
+    is_Gremio = request.user.groups.filter(name='Gremio').exists()
 
     context = {
+        'is_Gremio': is_Gremio,
         'reuniao': reuniao,
     }
     

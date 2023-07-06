@@ -8,4 +8,4 @@ def inicio(request):
     context = {
         'is_Gremio': is_Gremio
         }
-    return render(request, 'home/inicio.html', {})
+    return render(request, 'home/inicio.html', context)

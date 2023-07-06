@@ -28,7 +28,7 @@
                                     <div class="card-body">
                                         <a href="/informativo/{{ i.id }}" style="text-decoration: none; color: black;">
                                             <h5 class="card-title">{{ i.nome }}</h5>
-                                            <p class="card-text" style="text-align: justify;">{{ i.informativo | truncatewords:50}}</p>
+                                            <p class="card-text" style="text-align: justify;">{{ i.informativo | truncatewords:45}}</p>
                                             {%if is_Gremio%} 
                                             <div style="float:right; margin-bottom: 20px;">
                                                 <a href="/informativo/editar/{{ i.id }}" style="float: right; margin-right: 5px;" class="btn mb-1 btn-info">
