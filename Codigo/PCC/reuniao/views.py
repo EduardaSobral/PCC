@@ -21,9 +21,11 @@ def index(request):
 
 @login_required
 def detail(request, reuniao_id):
+    is_Gremio = request.user.groups.filter(name='Gremio').exists()
     reuniao = Reuniao.objects.get(pk=reuniao_id)
     context = {
-        'reuniao': reuniao
+        'reuniao': reuniao,
+        'is_Gremio': is_Gremio
     }
 
     return render(request, 'reuniao/detail.html', context)
@@ -40,6 +42,7 @@ def excluir(request, reuniao_id):
 @login_required
 def criar(request):
 
+    is_Gremio = request.user.groups.filter(name='Gremio').exists()
     if request.method == "POST": 
         form = ReuniaoForm(request.POST)
 
@@ -50,7 +53,8 @@ def criar(request):
         form = ReuniaoForm()
 
     context = {
-        'form': form
+        'form': form,
+        'is_Gremio': is_Gremio
     }
 
     return render(request, 'reuniao/criar.html/', context)
@@ -58,6 +62,7 @@ def criar(request):
 #método para editar um registro de reuniao
 @login_required
 def editar(request, reuniao_id):
+    is_Gremio = request.user.groups.filter(name='Gremio').exists()
     reuniao = Reuniao.objects.get(pk=reuniao_id)
 
     if request.method == "POST":
@@ -70,7 +75,8 @@ def editar(request, reuniao_id):
 
     context = {
         'form': form,
-        'reuniao_id': reuniao_id
+        'reuniao_id': reuniao_id,
+        'is_Gremio': is_Gremio
     }
 
     return render(request, 'reuniao/editar.html', context)

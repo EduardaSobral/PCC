@@ -11,7 +11,7 @@ from .models import Evento
 
 @login_required
 def criar(request):
-
+    is_Gremio = request.user.groups.filter(name='Gremio').exists()
     if request.method == "POST": 
         form = EventoForm(request.POST)
 
@@ -22,7 +22,8 @@ def criar(request):
         form = EventoForm()
 
     context = {
-        'form': form
+        'form': form,
+        'is_Gremio': is_Gremio
     }
 
     return render(request, 'evento/criar.html/', context)
@@ -42,15 +43,20 @@ def index(request):
 #método para detalhar evento
 
 def detail(request, evento_id):
+
+    is_Gremio = request.user.groups.filter(name='Gremio').exists()
     evento = Evento.objects.get(pk=evento_id)
     context = {
-        'evento': evento
+        'evento': evento,
+        'is_Gremio': is_Gremio
     }
 
     return render(request, 'evento/detail.html', context)
 
 @login_required
 def editar(request, evento_id):
+    
+    is_Gremio = request.user.groups.filter(name='Gremio').exists()
     evento = Evento.objects.get(pk=evento_id)
 
     if request.method == "POST":
@@ -64,6 +70,7 @@ def editar(request, evento_id):
     context = {
         'form': form,
         'evento_id': evento_id,
+        'is_Gremio': is_Gremio
     }
     
     return render(request, 'evento/editar.html', context)

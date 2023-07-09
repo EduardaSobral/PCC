@@ -18,9 +18,11 @@ def index(request):
     return render(request, 'informativo/index.html', context)
 
 def detail(request, informativo_id):
+    is_Gremio = request.user.groups.filter(name='Gremio').exists()
     informativo = Informativo.objects.get(pk=informativo_id)
     context = {
-        'informativo': informativo
+        'informativo': informativo,
+        'is_Gremio': is_Gremio
     }
 
     return render(request, 'informativo/detail.html', context)
@@ -36,7 +38,8 @@ def excluir(request, informativo_id):
 #método para criar uma nova informativo
 @login_required
 def criar(request):
-
+    
+    is_Gremio = request.user.groups.filter(name='Gremio').exists()
     if request.method == "POST": 
         form = InformativoForm(request.POST)
 
@@ -47,7 +50,8 @@ def criar(request):
         form = InformativoForm()
 
     context = {
-        'form': form
+        'form': form,
+        'is_Gremio': is_Gremio
     }
 
     return render(request, 'informativo/criar.html/', context)
@@ -55,6 +59,7 @@ def criar(request):
 #método para editar um registro de informativo
 @login_required
 def editar(request, informativo_id):
+    is_Gremio = request.user.groups.filter(name='Gremio').exists()
     informativo = Informativo.objects.get(pk=informativo_id)
 
     if request.method == "POST":
@@ -67,7 +72,8 @@ def editar(request, informativo_id):
 
     context = {
         'form': form,
-        'informativo_id': informativo_id
+        'informativo_id': informativo_id,
+        'is_Gremio': is_Gremio
     }
 
     return render(request, 'informativo/editar.html', context)
